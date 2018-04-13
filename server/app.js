@@ -1,11 +1,24 @@
 const express = require('express');
 const expressGraphQL = require('express-graphql');
+const mongoose = require('mongoose');
+const schema = require('./schema/schema');
+// import {}
 
 const app = express();
 
+// Mongo Connection
+mongoose.connect("mongodb://zeshan:zeshan@ds151348.mlab.com:51348/gpl-books");
+mongoose.connection.once('open', () => {
+  console.log("Connection with database")
+})
 
 app.use("/graphql", expressGraphQL({
-
+  schema,
+  /* this is only for testing purposes
+  if you dont provide the line(de abajo), it won't work
+  because graphql is a tool where frond end apps make requests
+  to this url */
+  graphiql: true
 }));
 
 
