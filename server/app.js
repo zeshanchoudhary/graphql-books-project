@@ -2,9 +2,12 @@ const express = require('express');
 const expressGraphQL = require('express-graphql');
 const mongoose = require('mongoose');
 const schema = require('./schema/schema');
-// import {}
+const cors = require('cors');
 
 const app = express();
+
+// allow cross-origin-requests
+app.use(cors());
 
 // Mongo Connection
 mongoose.connect("mongodb://zeshan:zeshan@ds151348.mlab.com:51348/gpl-books");
