@@ -1,23 +1,8 @@
 import React from "react";
-import { gql } from "apollo-boost";
 import { graphql } from "react-apollo";
+import { getAuthorsQuery } from '../queries/queries';
 
-const getAuthorsQuery = gql`
-  query {
-    authors {
-      id
-      name
-    }
-  }
-`;
 
-// const AddBookMutation = gql`
-// 	mutation addBook($name: ) {
-// 		books{
-//       id
-// 			name
-// 		}
-// 	}`
 
 class AddBook extends React.Component {
 
@@ -27,7 +12,7 @@ class AddBook extends React.Component {
     this.state = {
       name: '',
       genre: '',
-      author: ''
+      authorId: ''
     }
   }
 
@@ -45,9 +30,9 @@ class AddBook extends React.Component {
   }
 
   
-  handleSubmit = (e) => {
+  handleSubmit(e){
     e.preventDefault();
-    console.log("Adding Book");
+    console.log(this.state);
   }
   
   render() {
@@ -68,7 +53,7 @@ class AddBook extends React.Component {
           <div className="field"> 
             <label>Author::</label>
             <select name="author" 
-            onChange={(e) => this.setState({ author: e.target.value})}>
+            onChange={(e) => this.setState({ authorId: e.target.value})}>
               <option>Select an author</option>
               { this.displayAuthors() }
             </select>
