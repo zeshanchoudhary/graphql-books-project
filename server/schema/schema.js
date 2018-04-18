@@ -115,6 +115,35 @@ const Mutation = new GraphQLObjectType({
         });
         return book.save(); // Guardamos el author
       }
+    },
+    // Delete Book Mutation
+    deleteBook: {
+      type: BookType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID)}
+      },
+      resolve(parentValue, args){
+        let book =  Book.findById(args.id);
+        return book.remove();
+      }
+    },
+    // Edit Book Mutation
+    editBook: {
+      type: BookType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID)},
+        name: { type: GraphQLString },
+        genre: { type: GraphQLString },
+        authorId: { type: GraphQLID }
+      },
+      resolve(parentValue, {id, name, genre, authorId}){
+        const dataToUpdate = {
+          name: name,
+          genre: genre,
+          authorId: authorId
+        }
+        return Book.findByIdAndUpdate({_id: id},dataToUpdate);
+      }
     }
   }
 })
