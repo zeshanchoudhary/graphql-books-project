@@ -27,7 +27,6 @@ class AddBook extends React.Component {
     }
   }
 
-
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.addBookMutation({ // CALL THE MUTATION
@@ -39,6 +38,7 @@ class AddBook extends React.Component {
       refetchQueries: [{query: getBooksQuery}]
     }); 
   }
+
 
   render() {
     return(
