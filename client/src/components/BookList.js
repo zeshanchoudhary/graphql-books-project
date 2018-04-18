@@ -1,11 +1,6 @@
 import React from "react";
 import { graphql } from 'react-apollo';
 import { getBooksQuery } from '../queries/queries';
-<<<<<<< HEAD
-=======
-
->>>>>>> f4c29aea1c68418869cae094ab4219e74a706243
-
 
 class BookList extends React.Component {
 
