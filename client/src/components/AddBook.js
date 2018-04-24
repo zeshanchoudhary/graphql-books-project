@@ -63,7 +63,7 @@ class AddBook extends React.Component {
               { this.displayAuthors() }
             </select>
           </div>
-          <button value="submit" type="submit" onSubmit={this.handleSubmit}>Add</button>
+          <button value="submit" type="submit" onSubmit={this.handleSubmit}>+</button>
         </form>
     )
   }

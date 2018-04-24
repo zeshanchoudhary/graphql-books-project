@@ -30,8 +30,8 @@ class BookList extends React.Component {
       <div>
         <ul id="book-list">
           { this.displayBooks() }
-          <BookDetails bookId={this.state.selected} />
         </ul>
+        <BookDetails bookId={this.state.selected} />
       </div>
     );
   }
